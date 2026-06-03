@@ -1,12 +1,8 @@
-const stage = document.getElementById("stage");
 const panels = Array.from(document.querySelectorAll(".panel"));
 const navLinks = Array.from(document.querySelectorAll(".nav-link"));
 const dots = Array.from(document.querySelectorAll(".dot"));
 const navOrbit = document.querySelector(".nav-orbit");
-const loader = document.getElementById("loader");
-const loaderPercent = document.getElementById("loaderPercent");
-const loadingFill = document.getElementById("loadingFill");
-const loadingRocket = document.getElementById("loadingRocket");
+const hasGsap = typeof window.gsap !== "undefined";
 
 let activeIndex = 0;
 let isSnapping = false;
@@ -68,6 +64,15 @@ function revealPanel(index) {
   if (revealedPanels.has(index)) return;
   revealedPanels.add(index);
   const revealItems = panels[index].querySelectorAll(".reveal-group > *");
+
+  if (!hasGsap) {
+    revealItems.forEach((item) => {
+      item.style.opacity = "1";
+      item.style.transform = "translateY(0)";
+    });
+    return;
+  }
+
   gsap.fromTo(
     revealItems,
     { opacity: 0, y: 34, filter: "blur(10px)" },
@@ -161,33 +166,9 @@ function initSectionObserver() {
   panels.forEach((panel) => observer.observe(panel));
 }
 
-function initLoader() {
-  const loadTimeline = gsap.timeline({
-    defaults: { ease: "power2.out" },
-    onComplete: () => {
-      loader.classList.add("hidden");
-      revealPanel(0);
-      gsap.fromTo(".nav-shell", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" });
-    }
-  });
-
-  loadTimeline.to({ value: 0 }, {
-    value: 100,
-    duration: 2.85,
-    ease: "power1.inOut",
-    onUpdate() {
-      const progress = Math.round(this.targets()[0].value);
-      loaderPercent.textContent = `${progress}%`;
-      loadingFill.style.width = `${progress}%`;
-      loadingRocket.style.left = `${progress}%`;
-    }
-  });
-
-  loadTimeline.to(loader, { opacity: 0, duration: 0.8, ease: "power2.inOut" }, "+=0.2");
-}
-
 function initTyping() {
   const target = document.getElementById("typingText");
+  if (!target) return;
   const text = target.textContent.trim();
   target.textContent = "";
 
@@ -200,6 +181,8 @@ function initTyping() {
 }
 
 function initMagnetic() {
+  if (!hasGsap) return;
+
   document.querySelectorAll(".magnetic").forEach((item) => {
     item.addEventListener("mousemove", (event) => {
       const rect = item.getBoundingClientRect();
@@ -231,6 +214,8 @@ function initMagnetic() {
 }
 
 function initParallax() {
+  if (!hasGsap) return;
+
   const orbitX = gsap.quickTo(".orbital-display", "x", { duration: 1.2, ease: "power3.out" });
   const orbitY = gsap.quickTo(".orbital-display", "y", { duration: 1.2, ease: "power3.out" });
   const astronautX = gsap.quickTo(".astronaut-hero", "x", { duration: 1.4, ease: "power3.out" });
@@ -286,6 +271,8 @@ function initTextScramble() {
 }
 
 function createShootingStar() {
+  if (!hasGsap) return;
+
   const star = document.createElement("span");
   star.style.position = "fixed";
   star.style.zIndex = "2";
@@ -319,13 +306,20 @@ function initResponsiveFallback() {
   }
 }
 
-window.addEventListener("load", () => {
+function initApp() {
   initControls();
   initSectionObserver();
+  revealPanel(0);
   initTyping();
   initMagnetic();
   initParallax();
   initShootingStars();
-  initLoader();
+  initTextScramble();
   initResponsiveFallback();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
