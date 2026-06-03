@@ -12,24 +12,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="loader" id="loader">
-    <div class="loader-space">
-      <div class="loader-galaxy"></div>
-      <div class="loader-copy">
-        <span>Initializing Deep Space Interface</span>
-        <strong id="loaderPercent">0%</strong>
-      </div>
-      <div class="loading-track">
-        <div class="loading-fill" id="loadingFill"></div>
-        <div class="loading-rocket" id="loadingRocket" aria-hidden="true">
-          <span class="rocket-body"></span>
-          <span class="rocket-flame"></span>
-          <span class="rocket-smoke"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <canvas id="spaceCanvas" aria-hidden="true"></canvas>
   <div class="cosmic-fog" aria-hidden="true"></div>
   <div class="scanlines" aria-hidden="true"></div>
@@ -141,10 +123,10 @@
             <a class="social-dot magnetic" href="https://www.linkedin.com/in/vedantkarule" target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.86H3.72V20h3.22V8.86ZM5.34 4a1.86 1.86 0 1 0 0 3.72A1.86 1.86 0 0 0 5.34 4Zm15 9.62c0-3.04-1.62-5-4.15-5a3.57 3.57 0 0 0-3.21 1.76V8.86H9.9V20h3.21v-5.51c0-1.45.28-2.86 2.08-2.86 1.77 0 1.79 1.66 1.79 2.95V20h3.22v-6.38Z"/></svg>
             </a>
-            <a class="social-dot magnetic" href="https://www.instagram.com/vedantk_1729 target="_blank" rel="noreferrer" aria-label="Instagram">
+            <a class="social-dot magnetic" href="https://www.instagram.com/vedantk_1729" target="_blank" rel="noreferrer" aria-label="Instagram">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm8.7 2.9a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8ZM12 7.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Z"/></svg>
             </a>
-            <a class="social-dot magnetic" href="https://mail.google.com/mail/?view=cm&to=vedantkarule2000@gmail.com" aria-label="Email" target="_blank" rel="noreferrer">
+            <a class="social-dot magnetic" href="mailto:vedantkarule2000@gmail.com" aria-label="Email">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8 7.3L4 7.6V17h16V7.6l-8 4.7Zm0-2.3L18.8 7H5.2L12 10Z"/></svg>
             </a>
           </div>
@@ -152,10 +134,10 @@
 
         <div class="contact-copy reveal-group">
           <p class="contact-kicker">Contact</p>
-          <a class="primary-mail magnetic" href="https://mail.google.com/mail/?view=cm&to=vedantkarule2000@gmail.com" target="_blank" rel="noreferrer">vedantkarule2000@gmail.com</a>
+          <a class="primary-mail magnetic" href="mailto:vedantkarule2000@gmail.com">vedantkarule2000@gmail.com</a>
 
           <div class="contact-console">
-            <a class="contact-link magnetic" href="https://mail.google.com/mail/?view=cm&to=vedantkarule2000@gmail.com" target="_blank" rel="noreferrer"">
+            <a class="contact-link magnetic" href="mailto:vedantkarule2000@gmail.com">
               <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8 7.3L4 7.6V17h16V7.6l-8 4.7Zm0-2.3L18.8 7H5.2L12 10Z"/></svg>Email</span>
               <strong>vedantkarule2000@gmail.com</strong>
             </a>
@@ -169,7 +151,7 @@
             </a>
             <a class="contact-link magnetic" href="https://www.instagram.com/vedantk_1729" target="_blank" rel="noreferrer">
               <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm8.7 2.9a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8ZM12 7.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Z"/></svg>Instagram</span>
-              <strong>@vedantkarule</strong>
+              <strong>@vedantk_1729</strong>
             </a>
           </div>
         </div>
